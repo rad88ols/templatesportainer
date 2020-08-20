@@ -4,6 +4,9 @@ services:
    db:
      image: mysql:5.7
      volumes:
+     networks:
+      proxynet:
+        ipv4_address: 10.64.0.6
        - db_data:/var/lib/mysql
      restart: always
      environment:
@@ -14,6 +17,9 @@ services:
 
    wordpress:
      image: wordpress:latest
+     networks:
+      proxynet:
+        ipv4_address: 10.64.0.5
      ports:
        - 80
      restart: always
